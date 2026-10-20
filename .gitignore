@@ -1,0 +1,20 @@
+# Generated site
+/dist/
+/node_modules/
+
+# Editors / operating systems
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local config / secrets
+.env
+.env.*
+!.env.example
+*.log
+
+# Test output
+/coverage/
+/playwright-report/
+/test-results/

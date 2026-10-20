@@ -1,0 +1,14 @@
+{
+  "name": "koet-mai-thai",
+  "version": "0.2.1",
+  "private": true,
+  "description": "A Thai-language interactive life simulation, ready for GitHub Pages",
+  "scripts": {
+    "test": "node --check assets/data.js && node --check assets/events.js && node --check assets/sim.js && node test_mvp.js",
+    "build": "node scripts/build.mjs",
+    "dev": "python3 -m http.server 8080"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

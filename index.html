@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#f5f4f0" />
+<meta name="description" content="เกิดใหม่ในไทย — เว็บต้นแบบการจำลองชีวิตจากจังหวัดและปีเกิด จนถึงวันสุดท้ายของชีวิต" />
+<link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="th_TH" />
+<meta property="og:title" content="เกิดใหม่ในไทย · หนึ่งชีวิตที่ไม่ได้เลือกจุดเริ่มต้น" />
+<meta property="og:description" content="เกิดใหม่ในไทย — เว็บต้นแบบการจำลองชีวิตจากจังหวัดและปีเกิด จนถึงวันสุดท้ายของชีวิต" />
+<meta name="twitter:card" content="summary" />
+<title>เกิดใหม่ในไทย · หนึ่งชีวิตที่ไม่ได้เลือกจุดเริ่มต้น</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<header class="topbar container">
+  <a class="brand" href="./" aria-label="กลับหน้าแรก"><span class="brandmark">๗๗</span><span>เกิดใหม่ในไทย<small>ชีวิตหนึ่งจากความเป็นไปได้มากมาย</small></span></a>
+  <div class="top-actions"><span class="tag">MVP 0.2.1 · Playable</span><button id="guideBtn" class="textbutton" type="button">ข้อมูลและข้อจำกัด <span aria-hidden="true">↗</span></button></div>
+</header>
+<main class="container">
+  <section id="landing" class="landing">
+    <div class="landing-left">
+      <div class="eyebrow"><span class="live-dot"></span> INTERACTIVE LIFE SIMULATION / THAILAND</div>
+      <h1>ถ้าได้<span class="serif-accent">เกิดใหม่</span><br/>ในประเทศไทย</h1>
+      <p class="lead">คุณจะเกิดจังหวัดไหน? บ้านของคุณพร้อมแค่ไหน? และเหตุการณ์ในแต่ละยุคจะเปลี่ยนชีวิตนี้อย่างไร?</p>
+      <p class="soft">คุณเลือกปีเกิดได้ แต่เลือกครอบครัวและสถานที่เกิดไม่ได้ ทุกช่วงวัยมีกิจกรรมให้ลอง โฟกัสชีวิตที่เปลี่ยนได้ และคนที่อาจอยู่ข้างคุณไปอีกนาน</p>
+      <div class="micro-grid">
+        <div><strong>77</strong><span>จังหวัด (สุ่มเท่ากันในรุ่นทดลอง)</span></div>
+        <div><strong>1</strong><span>ชีวิตที่ต้องใช้ให้จบ</span></div>
+        <div><strong>∞</strong><span>กิจกรรมและความสัมพันธ์ที่แตกต่าง</span></div>
+      </div>
+      <div class="line-note"><span class="line-icon">○</span> ปีเกิดกำหนดเส้นเวลา · โฟกัสการเรียน เพื่อน ครอบครัว ความรักได้ · อนาคตเป็นการจำลอง</div>
+    </div>
+    <div class="start-card">
+      <div class="card-top"><span>บัตรผ่านสู่ชีวิตใหม่</span><span>01 / จุดเริ่มต้น</span></div>
+      <div class="card-divider"></div>
+      <div class="formgroup">
+        <label for="birthYear">คุณต้องการเกิดในปี พ.ศ. ใด <span class="required">*</span></label>
+        <select id="birthYear" required><option value="">เลือกปีเกิดก่อนเริ่มชีวิต</option></select>
+        <p class="formhint">เลือกปี พ.ศ. 2493–2569 · เหตุการณ์จะเรียงตามปีปฏิทินของชีวิต</p>
+      </div>
+      <div class="formgroup">
+        <label for="simulationStyle">แนวโน้มหลังปี พ.ศ. 2569</label>
+        <select id="simulationStyle"><option value="baseline">สมมติฐานฐาน — อัตราความเสี่ยงคงเดิม</option><option value="improving">สมมติฐานดีขึ้น — ความเสี่ยงลดลงเล็กน้อย</option><option value="adverse">สมมติฐานท้าทาย — ความเสี่ยงสูงขึ้นเล็กน้อย</option></select>
+        <p class="formhint">เป็นสมมติฐานเพื่อทดสอบระบบ ยังไม่ได้ปรับเทียบกับข้อมูลพยากรณ์</p>
+      </div>
+      <div class="card-point"><span class="point-icon">✳</span><span><b>สิ่งที่คุณเลือกไม่ได้</b><small>จังหวัดที่เกิด · ครอบครัว · โอกาสเริ่มต้น · เหตุการณ์ที่อยู่เหนือการควบคุม</small></span></div>
+      <button id="startBtn" class="primary" type="button" disabled>เกิดใหม่ <span aria-hidden="true">↗</span></button>
+      <p class="cardfoot">ต้นแบบเพื่อทดลองประสบการณ์: ยังไม่ใช่แบบจำลองความเสี่ยงที่ผ่านการปรับเทียบจากสถิติครบทุกจังหวัด</p>
+    </div>
+  </section>
+  <section id="lifeView" class="life-view" hidden>
+    <div class="life-header">
+      <div><div class="eyebrow"><span class="live-dot"></span> YOUR OTHER LIFE</div><h1>ชีวิตที่คุณไม่ได้เลือก<span class="serif-accent">จุดเริ่มต้น</span></h1><p class="soft" id="birthLine"></p></div>
+      <button id="newLifeBtn" class="outline" type="button">↻ เริ่มชีวิตใหม่</button>
+    </div>
+    <div class="yearband">
+      <div><span class="tiny-label">ปีปฏิทิน</span><strong id="currentYear">พ.ศ. —</strong></div>
+      <div><span class="tiny-label">อายุ</span><strong id="currentAge">— ปี</strong></div>
+      <div class="phase-wrapper"><span class="tiny-label">สถานะของข้อมูล</span><span id="phase" class="phase historical">ประวัติศาสตร์ / ข้อมูลจริง</span></div>
+      <div class="yearband-right"><span class="tiny-label">รหัสการสุ่มชีวิต</span><span id="seedLabel" class="mono">—</span></div>
+    </div>
+    <div class="life-layout">
+      <div class="story-area">
+        <section class="birth-scroll panel" id="birthCard">
+          <div class="panel-eyebrow">บันทึกการเกิด · 01</div>
+          <div class="birth-content"><div><span class="smallcaps">สถานที่เกิด</span><h2 id="birthProvince">—</h2><p id="birthOldProvince" class="muted"></p></div><div class="seal">TH<br/><b>77</b></div></div>
+          <div class="birth-grid"><div><span>ปีเกิด</span><strong id="birthYearDisplay"></strong></div><div><span>ครอบครัว</span><strong id="birthHousehold"></strong></div><div><span>พื้นที่</span><strong id="birthArea"></strong></div><div><span>โอกาสเริ่มต้น</span><strong id="birthLevel"></strong></div></div>
+        </section>
+        <section class="panel current-story" id="currentStory">
+          <div class="story-badge"><span id="storyTag">บันทึกชีวิตจำลอง</span><span id="storyYear">พ.ศ. —</span></div>
+          <h2 id="storyTitle">โลกเพิ่งรู้จักคุณ</h2>
+          <p id="storyText">ก้าวแรกของชีวิตเริ่มแล้ว</p>
+          <div id="historyCallout" class="history-callout" hidden></div>
+          <div id="outcomeNote" class="outcome-note" role="status" aria-live="polite" hidden></div>
+        </section>
+        <section id="focusPanel" class="panel focus-panel">
+          <div class="section-title"><div><div class="panel-eyebrow">WHAT MATTERS THIS YEAR</div><h3>ปีนี้คุณอยากโฟกัสอะไร?</h3></div><span class="tag" id="focusCurrent">ยังไม่เลือก</span></div>
+          <p class="focus-intro">เลือกสิ่งที่คุณจะให้เวลากับมันมากเป็นพิเศษ เปลี่ยนใจได้ และผลจะค่อย ๆ สะสมในแต่ละปี ไม่ได้เพิ่มคะแนนหลายครั้งจากการกดสลับ</p>
+          <div id="focusOptions" class="focus-grid" role="group" aria-label="เลือกโฟกัสชีวิต"></div>
+          <p class="focus-footer" id="focusHint">เมื่อโตพอ คุณจะได้เลือกแนวทางที่อยากให้ความสำคัญ</p>
+        </section>
+        <section class="panel choice-box" id="choiceBox" hidden>
+          <div class="choice-eyebrow" id="choiceKind">จุดเปลี่ยนที่คุณมีสิทธิ์เลือก</div>
+          <h2 id="choiceTitle"></h2><p id="choiceQuestion"></p><div id="choiceOptions" class="choices"></div>
+          <p class="choice-note">ไม่มีคำตอบที่ถูกที่สุดสำหรับทุกชีวิต · การตัดสินใจเปลี่ยนโอกาส ไม่ได้รับประกันผลลัพธ์</p>
+        </section>
+        <section class="panel social-panel" id="socialPanel">
+          <div class="section-title"><div><div class="panel-eyebrow">PEOPLE IN YOUR LIFE</div><h3 class="social-title">คนสำคัญของชีวิตนี้</h3></div><span class="tag">สัมพันธ์ที่เปลี่ยนไปตามเวลา</span></div>
+          <p class="social-help">ความสนิทกับครอบครัว เพื่อน และคนรักจะค่อย ๆ เปลี่ยนไป คุณเลือกใช้เวลากับคนสำคัญได้ปีละหนึ่งครั้ง</p>
+          <div id="socialList" class="social-list"></div>
+          <div class="social-actions"><div class="smallcaps">ใช้เวลาทำอะไรกับใครสักคน?</div><div id="socialActionControls" class="social-action-controls"></div><p id="socialActionHint" class="social-action-hint"></p></div>
+        </section>
+        <div class="controls panel">
+          <div class="control-main"><button class="primary" id="stepBtn" type="button">ใช้ชีวิตต่ออีก 1 ปี <span>→</span></button><button id="tenBtn" class="outline" type="button" title="สุ่มคำตอบกิจกรรมที่ข้ามไปอัตโนมัติ">ข้าม 10 ปี (สุ่มคำตอบ) »</button><button id="autoBtn" class="outline" type="button">▶ เดินอัตโนมัติ</button></div>
+          <p id="controlNote">คุณสามารถเลือกกิจกรรมและแนวทางชีวิตได้ หรือให้ระบบสุ่มคำตอบเมื่อเดินอัตโนมัติ</p>
+        </div>
+        <section class="panel history-panel"><div class="section-title"><div><span class="panel-eyebrow">LIFE ARCHIVE</span><h3>บันทึกชีวิตที่ผ่านมา</h3></div><span id="recordCount" class="tag">0 รายการ</span></div><div id="recordList" class="record-list"></div></section>
+      </div>
+      <aside class="dashboard panel">
+        <div class="panel-eyebrow">ชีวิตนี้ ณ ปีปัจจุบันของตัวละคร</div><h3>สิ่งที่ค่อย ๆ เปลี่ยนไป</h3>
+        <div id="scoreList" class="score-list"></div>
+
+        <div class="divider"></div><div class="panel-eyebrow">ชีวิตประจำวัน</div>
+        <div id="factList" class="fact-list"></div>
+        <div class="divider"></div><div class="panel-eyebrow">มุมมองในแต่ละปี</div><p class="forecast-note">สีเขียว = เหตุการณ์ในอดีตที่ตรวจสอบได้<br/>สีส้ม = การจำลองอนาคต / ความเป็นไปได้<br/>เหตุการณ์ส่วนตัวเป็นเรื่องสมมติทั้งหมด</p>
+      </aside>
+    </div>
+  </section>
+  <section id="endView" class="end-view" hidden>
+    <div class="end-intro"><div class="eyebrow">THE END / ONE LIFE</div><h1>ชีวิตนี้เดินทาง<br/><em>มาจนถึงวันสุดท้าย</em></h1><p>ชีวิตที่เพิ่งจบลงไม่ใช่คำทำนายชีวิตของใคร แต่เป็นหนึ่งในเส้นทางที่อาจเกิดขึ้นได้ภายใต้กติกาของการจำลองนี้</p></div>
+    <div class="end-card panel"><div class="card-top"><span>บันทึกชีวิตที่เคยเกิด</span><span id="endSeed" class="mono"></span></div><div class="end-big"><strong id="endAge">—</strong><span>ปีของชีวิต</span></div><div id="endFacts" class="end-facts"></div><div class="end-footer"><button id="copySummaryBtn" class="primary" type="button">คัดลอกสรุปชีวิต ↗</button><button id="againBtn" class="outline" type="button">เกิดใหม่อีกครั้ง</button></div></div>
+    <div class="end-caption"><h3>ถ้าเกิดใหม่อีกครั้ง ชีวิตจะเหมือนเดิมไหม?</h3><p>ลองเลือกปีเกิดเดิมและเปรียบเทียบกับอีกหนึ่งเส้นทางชีวิต</p></div>
+  </section>
+</main>
+<footer class="footer container"><div class="footer-name">เกิดใหม่ในไทย <span>© Prototype</span></div><p>เว็บต้นแบบเชิงการเรียนรู้ ใช้เหตุการณ์จริงที่มีแหล่งอ้างอิงร่วมกับเรื่องราวและความเสี่ยงที่ยังเป็นข้อมูลสาธิต ไม่ใช่การประเมินอายุขัยรายบุคคล</p><button id="footerGuideBtn" class="textbutton" type="button">ดูแหล่งข้อมูลและข้อจำกัด ↗</button></footer>
+<dialog id="guideDialog" class="guide-dialog"><form method="dialog"><button class="close" aria-label="ปิด" value="close">×</button><div class="panel-eyebrow">DATA & MODEL TRANSPARENCY</div><h2>ข้อมูลจริงอยู่ตรงไหน?</h2><p>ส่วนที่เป็น <b>ประวัติศาสตร์จริง</b> คือรายการเหตุการณ์ที่มีปีและลิงก์อ้างอิง ส่วนผลกระทบเฉพาะตัวละคร ครอบครัว รายได้ คะแนน และอายุเสียชีวิตในเวอร์ชันนี้ยังเป็น <b>กลไกสาธิต</b> ซึ่งไม่ได้ปรับเทียบกับการสำรวจครัวเรือนและตารางชีพจริง</p><h3>ความคืบหน้าของตัวต้นแบบ</h3><ul><li>เลือกปีเกิด พ.ศ. 2493–2569 และสุ่มหนึ่งใน 77 จังหวัด</li><li>ป้องกันการแสดงชื่อจังหวัดที่ยังไม่ก่อตั้งในปีเกิด โดยแสดงสังกัดจังหวัดเดิม</li><li>เหตุการณ์จริงตามปี เช่น วิกฤตปี 2540 สึนามิปี 2547 น้ำท่วมปี 2554 และโควิด-19 ปี 2563</li><li>ชีวิตเดินต่อเกินปี 2569 จนถึงวันเสียชีวิตจากความเสี่ยงที่เปลี่ยนตามอายุ</li><li>กิจกรรมทางเลือกทุกปีอายุ 6–18 ปี, โฟกัสชีวิตรายปี และความผูกพันกับครอบครัว เพื่อน และคนรัก</li><li>บันทึกชีวิตเก็บไว้ในเบราว์เซอร์นี้เท่านั้น</li></ul><h3>สิ่งที่ยังไม่เชื่อมต่อ</h3><p>การถ่วงน้ำหนักสุ่มจังหวัดตามการเกิดของแต่ละปี สถิติรายได้รายจังหวัด ตารางชีพรายปี และ AI เขียนเนื้อหาแบบเรียลไทม์ (ยังไม่มี API และไม่ควรใส่คีย์ไว้ในหน้าเว็บ)</p><div class="sources"><a href="https://data.go.th/th/dataset/catalog-dopa-go-th-dataset-dopa-star" target="_blank" rel="noopener noreferrer">กรมการปกครอง: จำนวนเกิดปี 2566 ↗</a><a href="https://population.un.org/wpp" target="_blank" rel="noopener noreferrer">UN WPP 2024: ประชากร/การคาดการณ์ ↗</a><a href="https://www.bot.or.th/en/our-roles/special-measures/Tom-Yum-Kung-lesson.html" target="_blank" rel="noopener noreferrer">ธปท.: วิกฤตปี 2540 ↗</a><a href="https://www.who.int/thailand/news/detail/13-01-2020-thailand-responding-to-the-novel-coronavirus" target="_blank" rel="noopener noreferrer">WHO: โควิด-19 ในไทยปี 2563 ↗</a></div><button class="primary" value="close">เข้าใจแล้ว</button></form></dialog>
+<script src="assets/data.js"></script><script src="assets/events.js"></script><script src="assets/sim.js"></script>
+</body></html>
