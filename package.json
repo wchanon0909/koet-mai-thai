@@ -1,6 +1,6 @@
 {
   "name": "koet-mai-thai",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": true,
   "description": "A Thai-language interactive life simulation, ready for GitHub Pages",
   "scripts": {

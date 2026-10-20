@@ -13,11 +13,12 @@
 <meta name="twitter:card" content="summary" />
 <title>เกิดใหม่ในไทย · หนึ่งชีวิตที่ไม่ได้เลือกจุดเริ่มต้น</title>
 <link rel="stylesheet" href="assets/style.css" />
+<link rel="stylesheet" href="assets/visual.css" />
 </head>
 <body>
 <header class="topbar container">
   <a class="brand" href="./" aria-label="กลับหน้าแรก"><span class="brandmark">๗๗</span><span>เกิดใหม่ในไทย<small>ชีวิตหนึ่งจากความเป็นไปได้มากมาย</small></span></a>
-  <div class="top-actions"><span class="tag">MVP 0.2.1 · Playable</span><button id="guideBtn" class="textbutton" type="button">ข้อมูลและข้อจำกัด <span aria-hidden="true">↗</span></button></div>
+  <div class="top-actions"><span class="tag">MVP 0.3.0 · Visual Edition</span><button id="guideBtn" class="textbutton" type="button">ข้อมูลและข้อจำกัด <span aria-hidden="true">↗</span></button></div>
 </header>
 <main class="container">
   <section id="landing" class="landing">
@@ -56,6 +57,11 @@
       <div><div class="eyebrow"><span class="live-dot"></span> YOUR OTHER LIFE</div><h1>ชีวิตที่คุณไม่ได้เลือก<span class="serif-accent">จุดเริ่มต้น</span></h1><p class="soft" id="birthLine"></p></div>
       <button id="newLifeBtn" class="outline" type="button">↻ เริ่มชีวิตใหม่</button>
     </div>
+    <section class="journey-banner" aria-label="เส้นทางชีวิต">
+      <div class="journey-heading"><span class="panel-eyebrow">✦ เส้นทางชีวิตของคุณ</span><h2>จากจุดเริ่มต้น สู่ชีวิตที่ไม่อาจคาดเดา</h2><p>ทุกปีคือเรื่องราวของคุณ · เลือกเส้นทาง แล้วดูสิ่งที่เกิดขึ้น</p></div>
+      <div class="journey-landscape" aria-hidden="true"><span>⌂</span><span>♧</span><span>♧</span><span>▥</span><span>▥</span></div>
+      <div class="journey-track" id="journeyTrack" aria-label="ความคืบหน้าชีวิต"></div>
+    </section>
     <div class="yearband">
       <div><span class="tiny-label">ปีปฏิทิน</span><strong id="currentYear">พ.ศ. —</strong></div>
       <div><span class="tiny-label">อายุ</span><strong id="currentAge">— ปี</strong></div>
@@ -81,11 +87,6 @@
           <p class="focus-intro">เลือกสิ่งที่คุณจะให้เวลากับมันมากเป็นพิเศษ เปลี่ยนใจได้ และผลจะค่อย ๆ สะสมในแต่ละปี ไม่ได้เพิ่มคะแนนหลายครั้งจากการกดสลับ</p>
           <div id="focusOptions" class="focus-grid" role="group" aria-label="เลือกโฟกัสชีวิต"></div>
           <p class="focus-footer" id="focusHint">เมื่อโตพอ คุณจะได้เลือกแนวทางที่อยากให้ความสำคัญ</p>
-        </section>
-        <section class="panel choice-box" id="choiceBox" hidden>
-          <div class="choice-eyebrow" id="choiceKind">จุดเปลี่ยนที่คุณมีสิทธิ์เลือก</div>
-          <h2 id="choiceTitle"></h2><p id="choiceQuestion"></p><div id="choiceOptions" class="choices"></div>
-          <p class="choice-note">ไม่มีคำตอบที่ถูกที่สุดสำหรับทุกชีวิต · การตัดสินใจเปลี่ยนโอกาส ไม่ได้รับประกันผลลัพธ์</p>
         </section>
         <section class="panel social-panel" id="socialPanel">
           <div class="section-title"><div><div class="panel-eyebrow">PEOPLE IN YOUR LIFE</div><h3 class="social-title">คนสำคัญของชีวิตนี้</h3></div><span class="tag">สัมพันธ์ที่เปลี่ยนไปตามเวลา</span></div>
@@ -116,6 +117,18 @@
   </section>
 </main>
 <footer class="footer container"><div class="footer-name">เกิดใหม่ในไทย <span>© Prototype</span></div><p>เว็บต้นแบบเชิงการเรียนรู้ ใช้เหตุการณ์จริงที่มีแหล่งอ้างอิงร่วมกับเรื่องราวและความเสี่ยงที่ยังเป็นข้อมูลสาธิต ไม่ใช่การประเมินอายุขัยรายบุคคล</p><button id="footerGuideBtn" class="textbutton" type="button">ดูแหล่งข้อมูลและข้อจำกัด ↗</button></footer>
+  <div id="decisionBackdrop" class="decision-backdrop" hidden></div>
+  <button id="decisionReopen" class="decision-reopen" hidden type="button">✦ มีการตัดสินใจรออยู่ · เปิดอีกครั้ง</button>
+  <div id="decisionPortal" class="decision-portal" role="dialog" aria-modal="true" aria-labelledby="choiceTitle" hidden>
+    <button id="decisionMinimize" class="decision-close" type="button" aria-label="ย่อหน้าต่างการตัดสินใจ" title="ย่อหน้าต่างเพื่อดูข้อมูลชีวิต">×</button>
+    <div class="decision-illustration" aria-hidden="true"><div class="illustration-sun"></div><div class="illustration-window"><span>✿</span></div><div class="illustration-desk"></div><div class="illustration-person"><span></span></div></div>
+    <div class="decision-content"><div class="choice-meta" id="decisionMeta">ช่วงเวลาสำคัญของชีวิต</div>        <section class="choice-box" id="choiceBox">
+          <div class="choice-eyebrow" id="choiceKind">จุดเปลี่ยนที่คุณมีสิทธิ์เลือก</div>
+          <h2 id="choiceTitle"></h2><p id="choiceQuestion"></p><div id="choiceOptions" class="choices"></div>
+          <p class="choice-note">ไม่มีคำตอบที่ถูกที่สุดสำหรับทุกชีวิต · การตัดสินใจเปลี่ยนโอกาส ไม่ได้รับประกันผลลัพธ์</p>
+        </section>
+</div>
+  </div>
 <dialog id="guideDialog" class="guide-dialog"><form method="dialog"><button class="close" aria-label="ปิด" value="close">×</button><div class="panel-eyebrow">DATA & MODEL TRANSPARENCY</div><h2>ข้อมูลจริงอยู่ตรงไหน?</h2><p>ส่วนที่เป็น <b>ประวัติศาสตร์จริง</b> คือรายการเหตุการณ์ที่มีปีและลิงก์อ้างอิง ส่วนผลกระทบเฉพาะตัวละคร ครอบครัว รายได้ คะแนน และอายุเสียชีวิตในเวอร์ชันนี้ยังเป็น <b>กลไกสาธิต</b> ซึ่งไม่ได้ปรับเทียบกับการสำรวจครัวเรือนและตารางชีพจริง</p><h3>ความคืบหน้าของตัวต้นแบบ</h3><ul><li>เลือกปีเกิด พ.ศ. 2493–2569 และสุ่มหนึ่งใน 77 จังหวัด</li><li>ป้องกันการแสดงชื่อจังหวัดที่ยังไม่ก่อตั้งในปีเกิด โดยแสดงสังกัดจังหวัดเดิม</li><li>เหตุการณ์จริงตามปี เช่น วิกฤตปี 2540 สึนามิปี 2547 น้ำท่วมปี 2554 และโควิด-19 ปี 2563</li><li>ชีวิตเดินต่อเกินปี 2569 จนถึงวันเสียชีวิตจากความเสี่ยงที่เปลี่ยนตามอายุ</li><li>กิจกรรมทางเลือกทุกปีอายุ 6–18 ปี, โฟกัสชีวิตรายปี และความผูกพันกับครอบครัว เพื่อน และคนรัก</li><li>บันทึกชีวิตเก็บไว้ในเบราว์เซอร์นี้เท่านั้น</li></ul><h3>สิ่งที่ยังไม่เชื่อมต่อ</h3><p>การถ่วงน้ำหนักสุ่มจังหวัดตามการเกิดของแต่ละปี สถิติรายได้รายจังหวัด ตารางชีพรายปี และ AI เขียนเนื้อหาแบบเรียลไทม์ (ยังไม่มี API และไม่ควรใส่คีย์ไว้ในหน้าเว็บ)</p><div class="sources"><a href="https://data.go.th/th/dataset/catalog-dopa-go-th-dataset-dopa-star" target="_blank" rel="noopener noreferrer">กรมการปกครอง: จำนวนเกิดปี 2566 ↗</a><a href="https://population.un.org/wpp" target="_blank" rel="noopener noreferrer">UN WPP 2024: ประชากร/การคาดการณ์ ↗</a><a href="https://www.bot.or.th/en/our-roles/special-measures/Tom-Yum-Kung-lesson.html" target="_blank" rel="noopener noreferrer">ธปท.: วิกฤตปี 2540 ↗</a><a href="https://www.who.int/thailand/news/detail/13-01-2020-thailand-responding-to-the-novel-coronavirus" target="_blank" rel="noopener noreferrer">WHO: โควิด-19 ในไทยปี 2563 ↗</a></div><button class="primary" value="close">เข้าใจแล้ว</button></form></dialog>
 <script src="assets/data.js"></script><script src="assets/events.js"></script><script src="assets/sim.js"></script>
 </body></html>

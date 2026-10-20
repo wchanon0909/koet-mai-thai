@@ -499,8 +499,30 @@
     }
     setText('socialActionHint',used?'คุณใช้เวลากับคนสำคัญไปแล้วในปีนี้ · จะเลือกอีกครั้งได้ในปีหน้า':'เลือกได้ 1 กิจกรรมต่อปี · บางความสัมพันธ์อาจไม่ได้สมหวังทันที');
   }
+  let decisionMinimized=false;
+  const closeDecision=()=>{decisionMinimized=true;updateDecisionPortal();};
+  const reopenDecision=()=>{decisionMinimized=false;updateDecisionPortal();};
+  document.getElementById('decisionMinimize').addEventListener('click',closeDecision);
+  document.getElementById('decisionReopen').addEventListener('click',reopenDecision);
+  function updateDecisionPortal(){
+    const pending=Boolean(state&&state.pending)&&!document.getElementById('lifeView').hidden;
+    const shown=pending&&!decisionMinimized;
+    document.getElementById('decisionBackdrop').hidden=!shown;
+    document.getElementById('decisionPortal').hidden=!shown;
+    document.getElementById('decisionReopen').hidden=!(pending&&decisionMinimized);
+    if(document.body.classList?.toggle)document.body.classList.toggle('decision-open',shown);
+  }
+  function updateJourney(){
+    const root=document.getElementById('journeyTrack');if(!root)return;
+    const marks=[0,6,12,15,18,25,40,60,80,100].filter(v=>v<=Math.max(100,state.age+5));
+    root.replaceChildren();
+    const progress=document.createElement('div');progress.className='journey-progress';progress.style.width=Math.min(100,state.age/100*100)+'%';root.append(progress);
+    for(const age of marks){const node=document.createElement('div');node.className='journey-node'+(state.age>=age?' passed':'')+(Math.abs(state.age-age)<4?' active':'');node.style.left=age+'%';const dot=document.createElement('span');dot.className='journey-dot';const title=document.createElement('strong');title.textContent=age+' ปี';const subtitle=document.createElement('small');subtitle.textContent=age===0?'เกิด':age===6?'วัยเรียน':age===12?'วัยรุ่น':age===18?'เริ่มต้นอนาคต':age===25?'วัยทำงาน':age===40?'วัยผู้ใหญ่':age===60?'เกษียณ':'เส้นทางชีวิต';node.append(dot,title,subtitle);root.append(node);}
+  }
   function render(){
     if(!state)return;
+    updateJourney();
+    document.getElementById('decisionMeta').textContent=`พ.ศ. ${state.year} · อายุ ${state.age} ปี · ทางเลือกของคุณ`;
     setText('birthLine',`เกิด พ.ศ. ${state.birthYear} · ${state.sex} · จุดเริ่มต้นอยู่ที่${state.birthProvinceHistorical}`);
     setText('currentYear',`พ.ศ. ${state.year}`);setText('currentAge',`${state.age} ปี`);
     setText('seedLabel',String(state.seed).padStart(10,'0'));
@@ -570,6 +592,8 @@
         }
       }else $('choiceBox').hidden=true;
     }else $('choiceBox').hidden=true;
+    if(!state.pending)decisionMinimized=false;
+    updateDecisionPortal();
     $('stepBtn').disabled=Boolean(state.pending);
     $('tenBtn').disabled=false;
     setText('autoBtn',timer?'Ⅱ หยุดเดินอัตโนมัติ':'▶ เดินอัตโนมัติ');
